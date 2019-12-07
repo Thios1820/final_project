@@ -20,3 +20,9 @@ After comparing the different serum samples against the age we were able to obta
 
 When observing the graph of the male, we can tell that the graph reflects a steady evolution.
 We noted that the number of serums slightly increase overtime without an important variation being drawn between them.
+
+#### Female
+
+The female graph displays a similar steadiness between the serums. However, the range between each serum is greater than of the male graph.
+'Graph'
+The above graph depicts the observations we just noted.
