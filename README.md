@@ -25,4 +25,11 @@ We noted that the number of serums slightly increase overtime without an importa
 
 The female graph displays a similar steadiness between the serums. However, the range between each serum is greater than of the male graph.
 'Graph'
-The above graph depicts the observations we just noted.
+
+The above graph depicts the observations we just mentionned.
+
+
+####Linear regression
+
+We did the linear regression on the S1 serum. 
+Before the age 50, the numbers are lower for the male , while the female are more important after 50.
