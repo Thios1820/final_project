@@ -29,7 +29,9 @@ The female graph displays a similar steadiness between the serums. However, the 
 The above graph depicts the observations we just mentionned.
 
 
-####Linear regression
+#### Linear regression
 
 We did the linear regression on the S1 serum. 
 Before the age 50, the numbers are lower for the male , while the female are more important after 50.
+For the next graph, the female variation is much lower than the one from the male. 
+And the different axes show how the male trend stays flat, whilefor the female it decreases as they age.
