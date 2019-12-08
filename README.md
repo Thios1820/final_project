@@ -60,7 +60,7 @@ It is apparent that for the male, the disease progression has much lower numbers
 
 ![Disease_progression_Female](IMG/Disease_progression_Female.png)
 
-we ran a linear regression after one year based on the Age and this is the graph obtained:
+We ran a linear regression after one year based on the Age and this is the graph obtained:
 
 ![DP_regression](IMG/DP_regression.png)
 
