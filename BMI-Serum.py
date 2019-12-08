@@ -31,7 +31,7 @@ with open('diabetes.data','r') as csvfile:
     y = []
     for row in plots:
         if row[1] == '1':
-            xm.append(float(row[0]))
+            xm.append(float(row[2]))
             ym.append(float(row[4]))
             zm.append(float(row[5]))
             am.append(float(row[6]))
@@ -40,7 +40,7 @@ with open('diabetes.data','r') as csvfile:
             dm.append(float(row[9]))
             dp_m.append(float(row[10]))
         else:
-            xf.append(float(row[0]))
+            xf.append(float(row[2]))
             yf.append(float(row[4]))
             zf.append(float(row[5]))
             af.append(float(row[6]))
@@ -75,37 +75,41 @@ af = [x[3] for x in xyzabcd_f]
 bf = [x[4] for x in xyzabcd_f]
 cf = [x[5] for x in xyzabcd_f]
 df = [x[6] for x in xyzabcd_f]
-dp_f = [x[7] for x in xyzabcd_f]
+dp_f = [x[6] for x in xyzabcd_f]
 
 plt.figure(1)
-plt.plot(xm,ym, label='Diabetes S1')
-plt.plot(xm,zm, label='Diabetes S2')
-plt.plot(xm,am, label='Diabetes S3')
-plt.plot(xm,bm, label='Diabetes S4')
-plt.plot(xm,cm, label='Diabetes S5')
-plt.plot(xm,dm, label='Diabetes S6')
-plt.plot(xm,dp_m, label='Disease progression')
+plt.plot(xm,ym, label='BMI S1')
+plt.plot(xm,zm, label='BMI S2')
+plt.plot(xm,am, label='BMI S3')
+plt.plot(xm,bm, label='BMI S4')
+plt.plot(xm,cm, label='BMI S5')
+plt.plot(xm,dm, label='BMI S6')
 
 plt.title('Graph Male')
 plt.legend()
+# plt.show()
 
 
 plt.figure(2)
-plt.plot(xf,yf, label='Diabetes S1')
-plt.plot(xf,zf, label='Diabetes S2')
-plt.plot(xf,af, label='Diabetes S3')
-plt.plot(xf,bf, label='Diabetes S4')
-plt.plot(xf,cf, label='Diabetes S5')
-plt.plot(xf,df, label='Diabetes S6')
-plt.plot(xf,dp_f, label='Disease progression')
+plt.plot(xf,yf, label='BMI S1')
+plt.plot(xf,zf, label='BMI S2')
+plt.plot(xf,af, label='BMI S3')
+plt.plot(xf,bf, label='BMI S4')
+plt.plot(xf,cf, label='BMI S5')
+plt.plot(xf,df, label='BMI S6')
 
 plt.title('Graph Female')
 plt.legend()
 
 
+# disease progression
+plt.figure(4)
+plt.plot(xm, dp_m, label='Y=Disease progression X=BMI')
+plt.title('Disease Progression Male')
+plt.legend()
 
+## REGRESSION S1 BMI
 
-# REGRESSION S1 ###############
 plt.figure(3)
 X = np.array(xm).reshape(-1, 1)
 Y = np.array(ym).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
@@ -117,7 +121,6 @@ plt.scatter(X, Y)
 plt.plot(X, Y_pred, color='blue')
 
 
-plt.figure(3)
 X = np.array(xf).reshape(-1, 1)
 Y = np.array(yf).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
 linear_regressor = LinearRegression()  # create object for the class
@@ -128,60 +131,6 @@ plt.scatter(X, Y)
 plt.plot(X, Y_pred, color='pink')
 plt.title('Graph regression Male and Female on S1')
 plt.legend()
-
-
-
-# REGRESSION S4###########################
-# plt.figure(4)
-# Xm = np.array(xm).reshape(-1, 1)
-# Ym = np.array(am).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-# linear_regressor = LinearRegression()  # create object for the class
-# linear_regressor.fit(Xm, Ym)  # perform linear regression
-# Ym_pred = linear_regressor.predict(Xm)  # make predictions
-
-# plt.scatter(Xm, Ym)
-# plt.plot(Xm, Ym_pred, color='blue')
-
-
-# plt.figure(4)
-# Xf = np.array(xf).reshape(-1, 1)
-# Bf = np.array(af).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-# linear_regressor = LinearRegression()  # create object for the class
-# linear_regressor.fit(Xf, Bf)  # perform linear regression
-# B_pred = linear_regressor.predict(Xf)  # make predictions
-
-# plt.scatter(Xf, Bf)
-# plt.plot(Xf, B_pred, color='pink')
-
-# plt.title('Graph regression Male and Female on S4')
- #plt.legend()
-
-# plt.show()
-
-# REGRESSION S5###########################
-# plt.figure(5)
-# Xm = np.array(xm).reshape(-1, 1)
-# Cm = np.array(am).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-# linear_regressor = LinearRegression()  # create object for the class
-# linear_regressor.fit(Xm, Cm)  # perform linear regression
-# Cm_pred = linear_regressor.predict(Xm)  # make predictions
-#
-# plt.scatter(Xm, Cm)
-# plt.plot(Xm, Cm_pred, color='blue')
-
-
-# plt.figure(5)
-# Xf = np.array(xf).reshape(-1, 1)
-# Cf = np.array(af).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-# linear_regressor = LinearRegression()  # create object for the class
-# linear_regressor.fit(Xf, Cf)  # perform linear regression
-# C_pred = linear_regressor.predict(Xf)  # make predictions
-#
-# plt.scatter(Xf, Cf)
-# plt.plot(Xf, C_pred, color='yellow')
-
-# plt.title('Graph regression Male and Female on S5')
-# plt.legend()
 
 
 plt.show()
