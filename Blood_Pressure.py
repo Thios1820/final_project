@@ -1,7 +1,7 @@
 import csv
 import matplotlib.pyplot as plt
-from sklearn.linear_model import LinearRegression
 import numpy as np
+from sklearn.linear_model import LinearRegression
 
 xm = []
 ym = []
@@ -27,7 +27,7 @@ with open('diabetes.data','r') as csvfile:
     y = []
     for row in plots:
         if row[1] == '1':
-            xm.append(float(row[0]))
+            xm.append(float(row[3]))
             ym.append(float(row[4]))
             zm.append(float(row[5]))
             am.append(float(row[6]))
@@ -36,7 +36,7 @@ with open('diabetes.data','r') as csvfile:
             dm.append(float(row[9]))
             dp_m.append(float(row[10]))
         else:
-            xf.append(float(row[0]))
+            xf.append(float(row[3]))
             yf.append(float(row[4]))
             zf.append(float(row[5]))
             af.append(float(row[6]))
@@ -98,35 +98,7 @@ plt.title('Graph Female')
 plt.legend()
 
 
-
-
-# REGRESSION ###############
-plt.figure(3)
-X = np.array(xm).reshape(-1, 1)
-Y = np.array(ym).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-linear_regressor = LinearRegression()  # create object for the class
-linear_regressor.fit(X, Y)  # perform linear regression
-Y_pred = linear_regressor.predict(X)  # make predictions
-
-plt.scatter(X, Y)
-plt.plot(X, Y_pred, color='blue')
-
-
-plt.figure(3)
-X = np.array(xf).reshape(-1, 1)
-Y = np.array(yf).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
-linear_regressor = LinearRegression()  # create object for the class
-linear_regressor.fit(X, Y)  # perform linear regression
-Y_pred = linear_regressor.predict(X)  # make predictions
-
-plt.scatter(X, Y)
-plt.plot(X, Y_pred, color='pink')
-plt.title('Graph regression Male and Female on S1')
-plt.legend()
-
-
-
-# REGRESSION ###########################
+# regression bp x dp
 plt.figure(4)
 Xm = np.array(xm).reshape(-1, 1)
 Ym = np.array(dp_m).reshape(-1, 1)  # -1 means that calculate the dimension of rows, but have 1 column
@@ -135,7 +107,7 @@ linear_regressor.fit(Xm, Ym)  # perform linear regression
 Ym_pred = linear_regressor.predict(Xm)  # make predictions
 
 plt.scatter(Xm, Ym)
-plt.plot(Xm, Ym_pred, color='blue')
+plt.plot(Xm, Ym_pred, color='blue', label="LR DP Male")
 
 
 plt.figure(4)
@@ -146,15 +118,6 @@ linear_regressor.fit(Xf, Bf)  # perform linear regression
 B_pred = linear_regressor.predict(Xf)  # make predictions
 
 plt.scatter(Xf, Bf)
-plt.plot(Xf, B_pred, color='pink')
-
-
-
-
-
-
-plt.title('Graph regression Male and Female on DP')
-plt.legend()
-
+plt.plot(Xf, B_pred, color='pink', label="LR DP Female")
 
 plt.show()
